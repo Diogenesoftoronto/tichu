@@ -14,7 +14,7 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "tichu - card game",
+	Use:   "tichu - multiplayer card game",
 	Short: "A card game for 4 players.",
 	Long: `A card game for 4 players.
 	tichu play begins a tichu game with 4 players.
