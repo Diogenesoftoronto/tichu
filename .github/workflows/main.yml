@@ -10,13 +10,18 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Get Dependencies
+        run: |
+          go mod tidy 
       - name: Build
         run: |
-          go mod tidy && go build -o ./bin/
+          go build -o ./bin/
       - name: Format Check
         run: |
            if [ "$(gofmt -s -l . | wc -l)" -gt 0 ]; then exit 1; fi
       - name: Test
-        run: go test -v ./...  
+        run: |
+          go test -v ./...  
       - name: Run
-        run: ./bin/tichu
+        run: |
+         ./bin/tichu
