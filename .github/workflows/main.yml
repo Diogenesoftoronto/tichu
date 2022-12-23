@@ -1,0 +1,22 @@
+name: Tichu Pipeline
+
+on:
+  push:
+    branches: 
+    - '**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build
+        run: |
+          go mod tidy && go build -o ./bin/
+      - name: Format Check
+        run: |
+            gofmt -l ./cmd
+      - name: Test
+        run: go test -v ./...  
+      - name: Run
+        run: ./bin/tichu
