@@ -6,8 +6,9 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestRootCmd() (t *testing.T) {
+func TestRootCmd(t *testing.T) {
 	cmd := RootCmd()
+	assert := assert.New(t)
 	assert.Equal(t, "tichu - multiplayer card game", cmd.Use)
 	assert.Equal(t, "A card game for 4 players.", cmd.Short)
 	assert.Equal(t, `A card game for 4 players.
@@ -23,5 +24,4 @@ func TestRootCmd() (t *testing.T) {
 
 	tichu message sends a message to the other players.`, cmd.Long)
 	assert.Equal(t, "Welcome to Tichu!\n", cmd.RunE)
-	return nil
 }

@@ -11,7 +11,7 @@ import (
 )
 
 // leaderboardCmd represents the leaderboard command
-func LeaderboardCmd() *cobra.command {
+func LeaderboardCmd() *cobra.Command {
 leaderboardCmd := &cobra.Command {
 	Use:   "leaderboard",
 	Short: "A brief description of your command",
