@@ -19,6 +19,3 @@ jobs:
       - name: Format Check
         run: |
            if [ "$(gofmt -s -l . | wc -l)" -gt 0 ]; then exit 1; fi
-      - name: Run
-        run: |
-         ./bin/tichu
