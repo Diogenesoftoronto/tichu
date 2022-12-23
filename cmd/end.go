@@ -11,6 +11,7 @@ import (
 )
 
 // endCmd represents the end command
+func EndCmd() *cobra.Command {
 var endCmd = &cobra.Command{
 	Use:   "end",
 	Short: "A brief description of your command",
@@ -20,13 +21,17 @@ and usage of using your command. For example:
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
+	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println("end called")
-	},
+		fmt.Fprintf(cmd.OutOrStdout(), "")
+		return nil
+		},
+	}
+	return endCmd
 }
 
 func init() {
-	rootCmd.AddCommand(endCmd)
+	RootCmd().AddCommand(EndCmd())
 
 	// Here you will define your flags and configuration settings.
 

@@ -11,6 +11,7 @@ import (
 )
 
 // cheerCmd represents the cheer command
+func CheerCmd() *cobra.Command {
 var cheerCmd = &cobra.Command{
 	Use:   "cheer",
 	Short: "A brief description of your command",
@@ -20,13 +21,17 @@ and usage of using your command. For example:
 Cobra is a CLI library for Go that empowers applications.
 This application is a tool to generate the needed files
 to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
+	RunE: func(cmd *cobra.Command, args []string) error {
 		fmt.Println("cheer called")
+		fmt.Fprintf(cmd.OutOrStdout(), "")
+		return nil
 	},
+}
+return cheerCmd
 }
 
 func init() {
-	rootCmd.AddCommand(cheerCmd)
+	RootCmd().AddCommand(CheerCmd())
 
 	// Here you will define your flags and configuration settings.
 
