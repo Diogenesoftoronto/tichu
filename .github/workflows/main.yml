@@ -15,7 +15,7 @@ jobs:
           go mod tidy && go build -o ./bin/
       - name: Format Check
         run: |
-           $OUT = gofmt -l ./cmd && if [[-f $OUT]] then &2 echo $OUT
+           if [ "$(gofmt -s -l . | wc -l)" -gt 0 ]; then exit 1; fi
       - name: Test
         run: go test -v ./...  
       - name: Run
