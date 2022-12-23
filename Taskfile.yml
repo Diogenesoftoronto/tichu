@@ -1,0 +1,7 @@
+version: "3"
+
+tasks:
+    build:
+        desc: Build the program
+        cmds:
+        - mkdir ./bin && go build -o ./bin/ 
