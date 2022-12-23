@@ -15,7 +15,7 @@ jobs:
           go mod tidy && go build -o ./bin/
       - name: Format Check
         run: |
-            gofmt -l ./cmd
+           $OUT = gofmt -l ./cmd && if [[-f $OUT]] then &2 echo "error"
       - name: Test
         run: go test -v ./...  
       - name: Run
