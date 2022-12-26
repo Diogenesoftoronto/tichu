@@ -34,14 +34,16 @@ func RootCmd() *cobra.Command {
 	holding certain cards in hand at the end of the game.`,
 		// Uncomment the following line if your bare application
 		// has an action associated with it:
-		Run: func(cmd *cobra.Command, args []string){
+		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println(`Welcome to Tichu! 
 Run 'tichu play' to begin, or 'tichu help' to learn more.`)
 		},
 	}
 	return rootCmd
 }
+
 var rootCmd = RootCmd()
+
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the RootCmd().
 func Execute() {

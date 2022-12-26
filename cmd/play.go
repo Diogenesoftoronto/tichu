@@ -24,7 +24,7 @@ func PlayCmd() *cobra.Command {
 		You can list players by using the list command.
 		You can quit the game by using the quit command.
 		You can get help by using the help command.`,
-		Run: func(cmd *cobra.Command, args []string){
+		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println("play called")
 			tichu.RunGame()
 		},

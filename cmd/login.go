@@ -25,7 +25,7 @@ func LoginCmd() *cobra.Command {
 			fmt.Println("login called")
 		},
 	}
-		return loginCmd
+	return loginCmd
 }
 
 func init() {

@@ -16,5 +16,5 @@ func TestRootCmd(t *testing.T) {
 	got = cmd.Short
 	want = "A card game for 4 players."
 	assert.Equal(want, got)
-	
+
 }
