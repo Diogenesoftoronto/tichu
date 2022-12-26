@@ -50,9 +50,9 @@ import (
 
 // MVP: getting started struct for the game
 type simpleModel struct {
-	players []string
-	choices []string
-	cursor int
+	players  []string
+	choices  []string
+	cursor   int
 	selected map[int]struct{}
 }
 
@@ -60,11 +60,11 @@ type simpleModel struct {
 func InitialModel() simpleModel {
 	// TODO: load players from the database
 	return simpleModel{
-		players: []string{"You", "Ally","Enemy 0", "Enemy 1"},
-		choices: []string{"Draw","Grand Tichu", "Message" },
-		cursor: 0,
+		players:  []string{"You", "Ally", "Enemy 0", "Enemy 1"},
+		choices:  []string{"Draw", "Grand Tichu", "Message"},
+		cursor:   0,
 		selected: make(map[int]struct{}),
-	} 
+	}
 }
 
 func (m simpleModel) Init() tea.Cmd {

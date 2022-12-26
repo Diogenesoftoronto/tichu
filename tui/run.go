@@ -7,8 +7,7 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 )
 
-
-func RunGame(){
+func RunGame() {
 	if len(os.Getenv("DEBUG")) > 0 {
 		f, err := tea.LogToFile("debug.log", "debug")
 		if err != nil {
@@ -17,7 +16,7 @@ func RunGame(){
 		}
 		defer f.Close()
 	}
-	
+
 	p := tea.NewProgram(InitialModel())
 	if _, err := p.Run(); err != nil {
 		fmt.Printf("Alas, there's been an error: %v", err)
