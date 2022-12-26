@@ -1,3 +1,9 @@
+![main](https://github.com/Diogenesoftoronto/tichu/actions/workflows/main.yml/badge.svg)
+![run](https://github.com/Diogenesoftoronto/tichu/actions/workflows/run.yml/badge.svg)
+![test](https://github.com/Diogenesoftoronto/tichu/actions/workflows/test.yml/badge.svg)
+
+
+
 # Tichu
 Tichu is a card game. This is a game written in go for playing tichu on the command line! 🎇 🀄
 ## Description
