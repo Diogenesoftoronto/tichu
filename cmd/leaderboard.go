@@ -1,7 +1,7 @@
-/*
-Copyright © 2022 NAME HERE <EMAIL ADDRESS>
+// /*
+// Copyright © 2022 NAME HERE <EMAIL ADDRESS>
 
-*/
+// */
 package cmd
 
 import (
@@ -10,17 +10,27 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// leaderboardCmd represents the leaderboard command
+// // leaderboardCmd represents the leaderboard command
 func LeaderboardCmd() *cobra.Command {
 leaderboardCmd := &cobra.Command {
-	Use:   "leaderboard",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
+	Use:   "leaderboard [flags] [args]",
+	Short: "Figure out who is winning",
+	Long: `This command will show you the current leaderboard
+	You can view the global, local, or personal leaderboard
+		
+		tichu leaderboard --global
+		
+		tichu leaderboard --local <server_id> 
+		
+		tichu leaderboard --personal <player_id>
 
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	You can also view the leaderboard for a specific game.
+		
+		tichu leaderboard --game <game_id>
+	You can also view the current rank of a specific player in game.
+	
+		tichu leaderboard --game <game_id> --personal <player_id>
+	`,
 	RunE: func(cmd *cobra.Command, args []string) (error) {
 		fmt.Println("leaderboard called")
 		fmt.Fprintf(cmd.OutOrStdout(), "")
@@ -31,7 +41,8 @@ to quickly create a Cobra application.`,
 }
 
 func init() {
-	RootCmd().AddCommand(LeaderboardCmd())
+	leaderboardCmd := LeaderboardCmd()
+	rootCmd.AddCommand(leaderboardCmd)
 
 	// Here you will define your flags and configuration settings.
 

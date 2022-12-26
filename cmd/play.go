@@ -7,32 +7,33 @@ package cmd
 import (
 	"fmt"
 
+	tichu "github.com/Diogenesoftoronto/tichu/tui"
 	"github.com/spf13/cobra"
 )
 
 // playCmd represents the play command
 
 func PlayCmd() *cobra.Command {
-	playCmd := &cobra.Command{
+	var playCmd = &cobra.Command{
 		Use:   "play",
-		Short: "A brief description of your command",
-		Long: `A longer description that spans multiple lines and likely contains examples
-	and usage of using your command. For example:
-	
-	Cobra is a CLI library for Go that empowers applications.
-	This application is a tool to generate the needed files
-	to quickly create a Cobra application.`,
-		RunE: func(cmd *cobra.Command, args []string) error {
+		Short: "use this command to play the game, if you havent figured that out yet",
+		Long: `Add players to the game, and then play the game.
+		You can add players by using the add command.
+		You can play the game by using the play command.
+		You can remove players by using the remove command.
+		You can list players by using the list command.
+		You can quit the game by using the quit command.
+		You can get help by using the help command.`,
+		Run: func(cmd *cobra.Command, args []string){
 			fmt.Println("play called")
-			fmt.Fprintf(cmd.OutOrStdout(), "")
-			return nil
+			tichu.RunGame()
 		},
 	}
 	return playCmd
 }
 
 func init() {
-	RootCmd().AddCommand(PlayCmd())
+	rootCmd.AddCommand(PlayCmd())
 
 	// Here you will define your flags and configuration settings.
 

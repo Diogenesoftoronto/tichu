@@ -9,19 +9,12 @@ import (
 func TestRootCmd(t *testing.T) {
 	cmd := RootCmd()
 	assert := assert.New(t)
-	assert.Equal(t, "tichu - multiplayer card game", cmd.Use)
-	assert.Equal(t, "A card game for 4 players.", cmd.Short)
-	assert.Equal(t, `A card game for 4 players.
-	tichu play begins a tichu game with 4 players.
+	got := cmd.Use
+	want := "tichu - multiplayer card game"
+	assert.Equal(want, got)
 
-	tichu cheer cheers you on to victory.
-
-	tichu help lists all commands.
-
-	tichu end ends the game.
-
-	tichu leaderboard lists the players and the score.
-
-	tichu message sends a message to the other players.`, cmd.Long)
-	assert.Equal(t, "Welcome to Tichu!\n", cmd.RunE)
+	got = cmd.Short
+	want = "A card game for 4 players."
+	assert.Equal(want, got)
+	
 }

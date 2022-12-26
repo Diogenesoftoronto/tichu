@@ -13,35 +13,39 @@ import (
 
 // RootCmd() represents the base command when called without any subcommands
 func RootCmd() *cobra.Command {
-	cmd := &cobra.Command{
-		Use:   "tichu - multiplayer card game",
+	var rootCmd = &cobra.Command{
+		Use:   "tichu [command] [flags]",
 		Short: "A card game for 4 players.",
-		Long: `A card game for 4 players.
-	tichu play begins a tichu game with 4 players.
-	
-	tichu cheer cheers you on to victory.
-	
-	tichu help lists all commands.
-	
-	tichu end ends the game.
-	
-	tichu leaderboard lists the players and the score.
-	
-	tichu message sends a message to the other players.`,
+		Long: `Tichu is played with a standard 52-card deck, plus 4 jokers.
+
+	Each player is dealt 14 cards, and 
+	the remaining cards are placed face down in the middle of the table.
+
+	The object of the game is to win tricks containing cards of higher 
+	value than those played by the other players.
+	Each trick is won by the player who played the highest-ranking card of the suit led.
+
+	Players may also play special cards called Tichus or Grand Tichus 
+	to win tricks without playing the highest card.
+
+	At the end of the game, the player with the most points wins.
+
+	Points are awarded for winning tricks and for 
+	holding certain cards in hand at the end of the game.`,
 		// Uncomment the following line if your bare application
 		// has an action associated with it:
-		RunE: func(cmd *cobra.Command, args []string) error {
-			fmt.Fprintf(cmd.OutOrStdout(), "Welcome to Tichu!\n")
-			return nil
+		Run: func(cmd *cobra.Command, args []string){
+			fmt.Println(`Welcome to Tichu! 
+Run 'tichu play' to begin, or 'tichu help' to learn more.`)
 		},
 	}
-	return cmd
+	return rootCmd
 }
-
+var rootCmd = RootCmd()
 // Execute adds all child commands to the root command and sets flags appropriately.
 // This is called by main.main(). It only needs to happen once to the RootCmd().
 func Execute() {
-	err := RootCmd().Execute()
+	err := rootCmd.Execute()
 	if err != nil {
 		os.Exit(1)
 	}
@@ -56,5 +60,5 @@ func init() {
 
 	// Cobra also supports local flags, which will only run
 	// when this action is called directly.
-	RootCmd().Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
