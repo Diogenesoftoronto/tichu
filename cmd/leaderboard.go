@@ -13,23 +13,23 @@ import (
 // // leaderboardCmd represents the leaderboard command
 func LeaderboardCmd() *cobra.Command {
 	leaderboardCmd := &cobra.Command{
-		Use:   "leaderboard [flags] [args]",
+		Use:   "leaderboard [commands] [flags] [args]",
 		Short: "Figure out who is winning",
 		Long: `This command will show you the current leaderboard
 	You can view the global, local, or personal leaderboard
 		
-		tichu leaderboard --global
+		leaderboard --global
 		
-		tichu leaderboard --local <server_id> 
+		leaderboard --local <server_id> 
 		
-		tichu leaderboard --personal <player_id>
+		leaderboard --personal <player_id>
 
 	You can also view the leaderboard for a specific game.
 		
-		tichu leaderboard --game <game_id>
+		leaderboard game <game_id>
 	You can also view the current rank of a specific player in game.
 	
-		tichu leaderboard --game <game_id> --personal <player_id>
+		leaderboard game <game_id> --personal <player_id>
 	`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			fmt.Println("leaderboard called")

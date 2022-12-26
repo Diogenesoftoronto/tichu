@@ -14,16 +14,27 @@ import (
 func MessageCmd() *cobra.Command {
 	messageCmd := &cobra.Command{
 		Use:   "message",
-		Short: "A brief description of your command",
-		Long: `A longer description that spans multiple lines and likely contains examples
-	and usage of using your command. For example:
-
-	Cobra is a CLI library for Go that empowers applications.
-	This application is a tool to generate the needed files
-	to quickly create a Cobra application.`,
+		Short: "send a message to a user",
+		Long: `You can send messages to other users using this command.
+		
+		Example:
+		message <user_id> "<message>"
+		
+		You can also send a message to a group.
+		message <group_id> "<message>"
+		
+		You can also use this command to view messages.
+		
+		To view messages from a user:
+		message -v <user_id>
+		
+		To view messages from a group:
+		message -v <group_id>
+		
+		To view messages from all users and groups:
+		message -v -all`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			fmt.Println("message called")
-			fmt.Fprintf(cmd.OutOrStdout(), "")
 			return nil
 		},
 	}
@@ -31,8 +42,7 @@ func MessageCmd() *cobra.Command {
 }
 
 func init() {
-	messageCmd := MessageCmd()
-	rootCmd.AddCommand(messageCmd)
+	rootCmd.AddCommand(MessageCmd())
 
 	// Here you will define your flags and configuration settings.
 

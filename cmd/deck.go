@@ -10,23 +10,36 @@ import (
 	"github.com/spf13/cobra"
 )
 
-// deckCmd represents the deck command
-var deckCmd = &cobra.Command{
-	Use:   "deck",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("deck called")
-	},
+func DeckCmd() *cobra.Command {
+	// deckCmd represents the deck command
+	var deckCmd = &cobra.Command{
+		Use:   "deck [commands] [flags] [args]",
+		Short: "Manage the cards in a deck",
+		Long: `This command will allow you to manage the cards in a deck.
+		
+		You can create a new deck, 
+		deck create <deck_id>
+		
+		add cards to a deck, 
+		deck add <deck_id> <card_id>
+		
+		remove cards from a deck, 
+		deck remove <deck_id> <card_id>
+		
+		and shuffle a deck.
+		deck shuffle <deck_id>
+		
+		You can also view the cards in a deck.
+		deck <deck_id>`,
+		Run: func(cmd *cobra.Command, args []string) {
+			fmt.Println("deck called")
+		},
+	}
+	return deckCmd
 }
 
 func init() {
-	rootCmd.AddCommand(deckCmd)
+	rootCmd.AddCommand(DeckCmd())
 
 	// Here you will define your flags and configuration settings.
 

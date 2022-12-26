@@ -13,13 +13,33 @@ import (
 // profileCmd represents the profile command
 var profileCmd = &cobra.Command{
 	Use:   "profile",
-	Short: "A brief description of your command",
-	Long: `A longer description that spans multiple lines and likely contains examples
-and usage of using your command. For example:
-
-Cobra is a CLI library for Go that empowers applications.
-This application is a tool to generate the needed files
-to quickly create a Cobra application.`,
+	Short: "Manage and view profiles",
+	Long: `You can use this command to manage and view profiles of users, groups, servers, and cards.
+	Almost all objects have a profile, and you can view the profile of any object using this command.
+	
+	To view the profile of a user:
+	profile -p <player_id>
+	
+	To view the profile of a group:
+	profile --group <group_id>
+	
+	To view the profile of a server:
+	profile -s <server_id>
+	
+	To view the profile of a card:
+	profile -c <card_id>
+	
+	To view the profile of a deck:
+	profile -d <deck_id>
+	
+	To view the profile of a game:
+	profile --game <game_id>
+	
+	To view your own profile:
+	profile
+	
+	To edit your own profile:
+	profile -e <field> <value>`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("profile called")
 	},

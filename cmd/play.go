@@ -15,15 +15,29 @@ import (
 
 func PlayCmd() *cobra.Command {
 	var playCmd = &cobra.Command{
-		Use:   "play",
-		Short: "use this command to play the game, if you havent figured that out yet",
+		Use:   "play [command] [args]",
+		Short: "use this command to play the game (if you havent figured that out yet)",
 		Long: `Add players to the game, and then play the game.
 		You can add players by using the add command.
+		
+		play add <player_id>
+
 		You can play the game by using the play command.
-		You can remove players by using the remove command.
+		
+		play
+		
+		You can remove players by using the remove command,
+		keep in mind you need to be authorized to do this.
+		
+		play remove <player_id>
+		
 		You can list players by using the list command.
+
+		play list -p
+
 		You can quit the game by using the quit command.
-		You can get help by using the help command.`,
+
+		play quit`,
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println("play called")
 			tichu.RunGame()
