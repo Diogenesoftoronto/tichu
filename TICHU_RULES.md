@@ -1,4 +1,4 @@
-Tichu has the players shuffle a deck of 56 cards. Then distributes eight cards to each player after ni distributes a cards each player can choose to either call Grand tichu with the cards that they have in their deck or decide to continue and get the rest of their six other cards. 
+Tichu has the players shuffle a deck of 56 cards. Then distributes eight cards to each player. After it distributes the cards, each player can choose to either call Grand tichu, or not. Either way they will then receive six other cards. 
 
 Players should only have 14 cards at maximum per round the round should end after three players have gotten rid of the rest of their cards. Players compete to capture points and to leave the round.
 
