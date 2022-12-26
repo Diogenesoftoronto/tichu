@@ -1,7 +1,12 @@
 version: "3"
 
 tasks:
-    build:
+    test:
+        desc: Test the program
+        cmds:
+        - go test -v ./...
+
+    default:
         desc: Build the program
         cmds:
-        - mkdir ./bin && go build -o ./bin/ 
+        - go build -o ./bin/ 
