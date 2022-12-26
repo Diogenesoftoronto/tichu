@@ -10,7 +10,7 @@ func TestRootCmd(t *testing.T) {
 	cmd := RootCmd()
 	assert := assert.New(t)
 	got := cmd.Use
-	want := "tichu - multiplayer card game"
+	want := "tichu [command] [flags]"
 	assert.Equal(want, got)
 
 	got = cmd.Short
