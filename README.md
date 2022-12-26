@@ -12,14 +12,29 @@ Points are awarded for winning tricks and for holding certain cards in hand at t
 
 ## Rules
 
-The rules of tichu are a bit complex but can be found [here](https://en.wikipedia.org/wiki/Tichu).
+The rules of tichu are a bit complex but can be found [here](TICHU_RULES.md).
+
+## Motivation
+
+I wanted to create a game with Go and the Bubbletea library for my friends to play if they wanted.
+I also wanted to try seeing if I could use this commandline tool in a larger project I am working on with GDscript and [Godot](https://www.godotengine.org).
+This is also my first time using the Bubbletea library so I wanted to see how it worked in a smaller project.
+
+## Features
+
+- [x] Play tichu on the command line
+- [x] Play with 4 players
+
+## Dependencies
+
+- [task*](https://taskfile.dev/#/installation)
 
 ## Installation
 
 ### Quick Installation
 You can install this program via the go package manager:
 
-```go
+```bash
 $ go install github.com/Diogenesoftoronto/tichu
 ```
 
@@ -37,11 +52,41 @@ $ cd tichu
 ```
 3. Then compile the program
 ```bash
-$ go build
+$ go build -o ./bin/
 ```
+you can also now compile the program with the following command:
+```bash
+$ task
+```
+More compilation options can be found in the [taskfile](Taskfile.yml)
 
-you can find configuration for tichu in the .tichu file of the directory you installed it in.
+Keep in mind that you can only do this if you have the task package installed.
+
+
+## Configuration
+
+You can find configuration for tichu in the .tichu file of the directory you installed it in.
 
 e.g if you installed it in your home directory you can find the configuration file in ~/.tichu.conf/...
 
 ## Usage
+
+To begin the game you can run the following command:
+
+```bash
+$ tichu play
+```
+
+## Contributing
+
+If you would like to contribute to this project please feel free to do so. I am open to any suggestions or improvements. I am also open to any issues you may find.
+
+## Credits
+
+I would like to thank the following people for their help in creating this project:
+
+- Sinthrill
+
+## License
+
+This project is licensed under the MPL v2 License - see the [LICENSE](LICENSE) file for details.
