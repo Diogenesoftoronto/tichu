@@ -34,6 +34,7 @@ This is also my first time using the Bubbletea library so I wanted to see how it
 ## Dependencies
 
 - [task*](https://taskfile.dev/#/installation)
+- [go](https://golang.org/doc/install)
 
 ## Installation
 
