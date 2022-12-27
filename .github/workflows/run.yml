@@ -1,4 +1,4 @@
-name: Tichu Tests
+name: Tichu Run
 
 on:
   push:
