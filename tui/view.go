@@ -6,7 +6,7 @@ import (
 
 func (m simpleModel) View() string {
 	// The header
-	s := "What should we buy at the market?\n\n"
+	s := "What is your move?\n\n"
 
 	// Iterate over our choices
 	for i, choice := range m.choices {
