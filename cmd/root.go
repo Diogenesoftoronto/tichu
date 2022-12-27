@@ -34,9 +34,11 @@ func RootCmd() *cobra.Command {
 	holding certain cards in hand at the end of the game.`,
 		// Uncomment the following line if your bare application
 		// has an action associated with it:
-		Run: func(cmd *cobra.Command, args []string) {
+		ValidArgs: []string{"", "play", "help", "profile", "server", "deck", "message", "leaderboard", "login", "logout"},
+		RunE: func(cmd *cobra.Command, args []string) error {
 			fmt.Println(`Welcome to Tichu! 
 Run 'tichu play' to begin, or 'tichu help' to learn more.`)
+			return nil
 		},
 	}
 	return rootCmd
