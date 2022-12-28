@@ -175,8 +175,8 @@ func init() {
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// playCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
-	playCmd.Flags().BoolP("no-tui", "nt", false, "start a game without the tui")
-	gameCmd.Flags().BoolP("no-tui", "nt", false, "start a game without the tui")
+	playCmd.Flags().BoolP("no-tui", "n", false, "start a game without the tui")
+	gameCmd.Flags().BoolP("no-tui", "n", false, "start a game without the tui")
 	listCmd.Flags().BoolP("players", "p", false, "List players in the game")
 	listCmd.Flags().BoolP("games", "g", false, "List games you are in")
 }

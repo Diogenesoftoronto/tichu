@@ -35,7 +35,9 @@ This is also my first time using the Bubbletea library so I wanted to see how it
 
 - [task*](https://taskfile.dev/#/installation)
 - [go](https://golang.org/doc/install)
+- [docker*](https://www.docker.com)
 
+Note: * -> denotes a dev or optional dependency.
 ## Installation
 
 ### Quick Installation
@@ -69,7 +71,22 @@ More compilation options can be found in the [taskfile](Taskfile.yml)
 
 Keep in mind that you can only do this if you have the task package installed.
 
+### Installation with Docker
 
+Docker is the best way to install this program cross-platform.
+
+1. Build the docker image
+
+``` bash
+docker build --tag tichu <path/to/project/root>
+```
+
+2. Run the image!
+
+``` bash
+docker run tichu
+```
+That's all you need to do! Obviously this requires having docker already installed.
 ## Configuration
 
 You can find configuration for tichu in the .tichu file of the directory you installed it in.

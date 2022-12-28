@@ -73,8 +73,8 @@ func init() {
 	// and all subcommands, e.g.:
 	// mark the flags as required
 
-	messageCmd.PersistentFlags().BoolP("global", "gl", false, "for a global context")
-	messageCmd.PersistentFlags().BoolP("local", "lo", true, "for a local context")
+	messageCmd.PersistentFlags().BoolP("global", "e", false, "for a global context")
+	messageCmd.PersistentFlags().BoolP("local", "l", true, "for a local context")
 	messageCmd.PersistentFlags().BoolP("group", "g", false, "for a group context")
 	messageCmd.PersistentFlags().BoolP("player", "p", false, "for a player context")
 	// Cobra supports local flags which will only run when this command
