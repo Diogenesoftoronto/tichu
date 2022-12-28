@@ -56,7 +56,7 @@ func ServerCreateCmd() *cobra.Command {
 }
 
 func ServerJoinCmd() *cobra.Command {
-	
+
 	// serverCmd represents the server command
 	var serverJoinCmd = &cobra.Command{
 		Use:   "join [flags] [args]",
@@ -65,7 +65,7 @@ func ServerJoinCmd() *cobra.Command {
 		You can join a server,
 		server join <server_id>`,
 		Example: "server join <server_id>",
-		Args: cobra.MinimumNArgs(1),
+		Args:    cobra.MinimumNArgs(1),
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println("server join called")
 		},
@@ -74,7 +74,7 @@ func ServerJoinCmd() *cobra.Command {
 }
 
 func ServerDeleteCmd() *cobra.Command {
-	
+
 	// serverCmd represents the server command
 	var serverDeleteCmd = &cobra.Command{
 		Use:   "delete [flags] [args]",
@@ -83,7 +83,7 @@ func ServerDeleteCmd() *cobra.Command {
 		You can delete a server(you must be the server owner to do this),
 		server delete <server_id>`,
 		Example: "server delete <server_id>",
-		Args: cobra.MinimumNArgs(1),
+		Args:    cobra.MinimumNArgs(1),
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println("server delete called")
 		},
@@ -91,8 +91,8 @@ func ServerDeleteCmd() *cobra.Command {
 	return serverDeleteCmd
 }
 
-func ServerLeaveCmd() *cobra.Command{
-	
+func ServerLeaveCmd() *cobra.Command {
+
 	// serverCmd represents the server command
 	var serverLeaveCmd = &cobra.Command{
 		Use:   "leave [flags] [args]",
@@ -101,14 +101,13 @@ func ServerLeaveCmd() *cobra.Command{
 		You can leave a server,
 		server leave <server_id>`,
 		Example: "server leave <server_id>",
-		Args: cobra.MinimumNArgs(1),
+		Args:    cobra.MinimumNArgs(1),
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println("server leave called")
 		},
 	}
 	return serverLeaveCmd
 }
-
 
 func init() {
 	serverCmd := ServerCmd()

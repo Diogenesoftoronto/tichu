@@ -43,7 +43,7 @@ func MessageCmd() *cobra.Command {
 
 func MessageSendCmd() *cobra.Command {
 	messageSendCmd := &cobra.Command{
-		Use: "send",
+		Use:   "send",
 		Short: "Send a message to a user or group",
 		Long: `You can send messages to other users using this command.
 		send -p <player_id> "<message>"
@@ -51,7 +51,7 @@ func MessageSendCmd() *cobra.Command {
 		You can also send a message to a group.
 		send -g <group_id> "<message>"`,
 		Example: "send -p <player_id> \"<message>\"",
-		Args: cobra.MaximumNArgs(2),
+		Args:    cobra.MaximumNArgs(2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			fmt.Println("send called")
 			return nil
@@ -60,23 +60,21 @@ func MessageSendCmd() *cobra.Command {
 	return messageSendCmd
 }
 
-
-
 func init() {
-	
+
 	messageCmd := MessageCmd()
-	
+
 	messageCmd.AddCommand(MessageSendCmd())
 	rootCmd.AddCommand(messageCmd)
-	
+
 	// Here you will define your flags and configuration settings.
-	
+
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
 	// mark the flags as required
-	
+
 	messageCmd.PersistentFlags().BoolP("global", "gl", false, "for a global context")
-	messageCmd.PersistentFlags().BoolP("local", "lo", true,"for a local context")
+	messageCmd.PersistentFlags().BoolP("local", "lo", true, "for a local context")
 	messageCmd.PersistentFlags().BoolP("group", "g", false, "for a group context")
 	messageCmd.PersistentFlags().BoolP("player", "p", false, "for a player context")
 	// Cobra supports local flags which will only run when this command

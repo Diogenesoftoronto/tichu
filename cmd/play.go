@@ -51,7 +51,7 @@ func PlayCmd() *cobra.Command {
 
 		play quit`,
 		ValidArgs: []string{"", "add", "remove", "list", "quit", "game"},
-		Example:  "play add 1234567890",
+		Example:   "play add 1234567890",
 		RunE: func(cmd *cobra.Command, args []string) error {
 			fmt.Println("play called")
 			tichu.RunGame()
@@ -109,7 +109,7 @@ func PlayAddCmd() *cobra.Command {
 		
 		play add <player_id>...`,
 		Example: "play add 1234567890 0987654321",
-		Args: cobra.MinimumNArgs(1),
+		Args:    cobra.MinimumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			fmt.Println("play add called")
 			return nil
@@ -120,14 +120,14 @@ func PlayAddCmd() *cobra.Command {
 
 func PlayRemoveCmd() *cobra.Command {
 	var playRemoveCmd = &cobra.Command{
-		Use: "remove [args]",
+		Use:   "remove [args]",
 		Short: "Remove players from the game",
 		Long: `You can use this command to remove players from the game.
 		You can remove multiple players at once.
 
 		play remove <player_id>...`,
 		Example: "play remove 1234567890 0987654321",
-		Args: cobra.MinimumNArgs(1),
+		Args:    cobra.MinimumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			fmt.Println("play remove called")
 			return nil
@@ -145,7 +145,7 @@ func PlayQuitCmd() *cobra.Command {
 
 		play quit <game_id>...`,
 		Example: "play quit <game_id>",
-		Args: cobra.MinimumNArgs(1),
+		Args:    cobra.MinimumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			fmt.Println("play quit called")
 			return nil
@@ -165,13 +165,13 @@ func init() {
 	playCmd.AddCommand(PlayRemoveCmd())
 	playCmd.AddCommand(PlayQuitCmd())
 	rootCmd.AddCommand(playCmd)
-	
+
 	// Here you will define your flags and configuration settings.
-	
+
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
 	// playCmd.PersistentFlags().String("foo", "", "A help for foo")
-	
+
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// playCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")

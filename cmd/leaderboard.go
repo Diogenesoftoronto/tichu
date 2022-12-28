@@ -42,7 +42,7 @@ func LeaderboardCmd() *cobra.Command {
 
 func LeaderboardGameCmd() *cobra.Command {
 	leaderboardGameCmd := &cobra.Command{
-		Use: "game <game_id> args",
+		Use:   "game <game_id> args",
 		Short: "View the leaderboard for a specific game",
 		Long: `This command will show you the current leaderboard for a specific game.
 		You can view the global, local, or personal leaderboard
@@ -54,7 +54,7 @@ func LeaderboardGameCmd() *cobra.Command {
 			game --personal <game_id>  <player_id>
 		`,
 		Example: "leaderboard game <game_id> --personal <player_id>",
-		Args: cobra.MinimumNArgs(1),
+		Args:    cobra.MinimumNArgs(1),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			fmt.Println("leaderboard game called")
 			fmt.Fprintf(cmd.OutOrStdout(), "")
@@ -75,7 +75,7 @@ func init() {
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
 	// leaderboardCmd.PersistentFlags().String("foo", "", "A help for foo")
-	
+
 	leaderboardCmd.PersistentFlags().BoolP("global", "g", false, "view the global leaderboard")
 	leaderboardCmd.PersistentFlags().BoolP("local", "s", false, "view the server leaderboard")
 	leaderboardCmd.PersistentFlags().BoolP("personal", "p", false, "view a leaderboard for a specific player")

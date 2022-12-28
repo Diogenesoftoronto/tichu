@@ -31,9 +31,9 @@ func DeckCmd() *cobra.Command {
 		
 		You can also view the cards in a deck.
 		deck <deck_id>`,
-		Args: cobra.MinimumNArgs(2),
+		Args:      cobra.MinimumNArgs(2),
 		ValidArgs: []string{"", "create", "add", "remove", "shuffle", "view"},
-		Example: "deck create deck",
+		Example:   "deck create deck",
 		Run: func(cmd *cobra.Command, args []string) {
 			fmt.Println("deck called")
 		},
@@ -136,8 +136,6 @@ func DeckShuffleCmd() *cobra.Command {
 // 	return deckViewCmd
 // }
 
-
-
 func init() {
 
 	deckCmd := DeckCmd()
@@ -157,7 +155,7 @@ func init() {
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
-	
+
 	// deckCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	creatCmd.Flags().IntP("amount", "a", 1, "The amount of decks to create")
 }

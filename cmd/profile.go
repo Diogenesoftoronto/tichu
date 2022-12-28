@@ -82,8 +82,6 @@ func ProfileEditCmd() *cobra.Command {
 	return profileEditCmd
 }
 
-
-
 func ProfileGroupCmd() *cobra.Command {
 	var profileGroupCmd = &cobra.Command{
 		Use:     "group <group_id>",
@@ -197,7 +195,6 @@ func ProfilePlayerCmd() *cobra.Command {
 	return profilePlayerCmd
 }
 
-
 func init() {
 	// declare the profile command
 	profileCmd := ProfileCmd()
@@ -225,4 +222,3 @@ func init() {
 	// is called directly, e.g.:
 	// profileCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
-
