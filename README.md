@@ -84,7 +84,7 @@ docker build --tag tichu <path/to/project/root>
 2. Run the image!
 
 ``` bash
-docker run tichu
+docker run -it tichu <command>...
 ```
 That's all you need to do! Obviously this requires having docker already installed.
 ## Configuration
