@@ -45,9 +45,9 @@ func DeckCmd() *cobra.Command {
 func DeckCreateCmd() *cobra.Command {
 	// deckCmd represents the deck command
 	var deckCreateCmd = &cobra.Command{
-		Use:     "create [flags] <deck_type>",
+		Use:     "create [flags] ...<arg>",
 		Short:   "Create a new deck",
-		Example: "create deck",
+		Example: "create 1",
 		Long: `You can use this command to create a new deck.
 		
 		To create a new deck:
