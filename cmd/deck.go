@@ -1,12 +1,13 @@
 /*
 Copyright © 2022 NAME HERE <EMAIL ADDRESS>
-
 */
 package cmd
 
 import (
 	"fmt"
+	"strconv"
 
+	"github.com/Diogenesoftoronto/tichu/deck"
 	"github.com/spf13/cobra"
 )
 
@@ -57,8 +58,22 @@ func DeckCreateCmd() *cobra.Command {
 		
 		Note that this argument returns the deck id of the new deck.`,
 		Args: cobra.MinimumNArgs(1),
-		Run: func(cmd *cobra.Command, args []string) {
+		RunE: func(cmd *cobra.Command, args []string) error {
 			fmt.Println("deck create called")
+			deck_type, err := strconv.ParseInt(args[0], 10, 8)
+			if err != nil {
+				return err
+			}
+
+			deck_int := int(deck_type)
+			if dtype, err := deck.ParseDeck_type(deck_int); err != nil {
+				return err
+			} else {
+				d := deck.New(dtype)
+				message := fmt.Sprintf("Created deck %s", d.Id)
+				fmt.Println(message)
+				return nil
+			}
 		},
 	}
 	return deckCreateCmd
