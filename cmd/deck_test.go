@@ -30,7 +30,7 @@ func TestDeckCreateCmd(t *testing.T) {
 		}
 	}
 	got := cmd.Use
-	want := "create [flags] <deck_type>"
+	want := "create [flags] ...<arg>"
 	assert(want, got)
 
 	got = cmd.Short
