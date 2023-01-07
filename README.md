@@ -5,6 +5,8 @@
 
 
 # Tichu
+![logo](logo.jpeg) <p style="font-size: 12rem; font-weight: bold; color: #663399; font-family: 'Press Start 2P', cursive; text-transform: uppercase; letter-spacing: 2px; text-shadow: 1px 1px 2px black;">TICHU<p>
+
 Tichu is a card game. This is a game written in go for playing tichu on the command line! 🎇 🀄
 ## Description
 
