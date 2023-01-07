@@ -1,0 +1,7 @@
+.git*
+.vscode
+.flscheckout
+TODOS.md
+Taskfile.yml
+tichu.fossil
+/bin
