@@ -4,10 +4,29 @@
 
 
 
-![logo](logo.jpeg) <p style="font-size: 12rem; font-weight: bold; color: #663399; font-family: 'Press Start 2P', cursive; text-transform: uppercase; letter-spacing: 2px; text-shadow: 1px 1px 2px black;">TICHU</p>
+![logo](img/logo.jpeg) <p style="font-size: 12rem; font-weight: bold; color: #663399; font-family: 'Press Start 2P', cursive; text-transform: uppercase; letter-spacing: 2px; text-shadow: 1px 1px 2px black;">TICHU</p>
 # Tichu
 
 Tichu is a card game. This is a game written in go for playing tichu on the command line! 🎇 🀄
+
+## Table of Contents
+
+- [Table of Contents](#table-of-contents)
+- [Description](#description)
+- [Rules](#rules)
+- [Motivation](#motivation)
+- [Features](#features)
+- [Dependencies](#dependencies)
+- [Installation](#installation)
+    - [Quick Installation](#quick-installation)
+    - [Installation from source](#installation-from-source)
+    - [Installation with Docker](#installation-with-docker)
+- [Configuration](#configuration)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [Credits](#credits)
+- [License](#license)
+
 ## Description
 
 It is played with a standard 52-card deck, plus 4 jokers.
@@ -105,13 +124,13 @@ $ tichu play
 
 ## Contributing
 
-If you would like to contribute to this project please feel free to do so. I am open to any suggestions or improvements. I am also open to any issues you may find.
+If you would like to contribute to this project please feel free to do so. I am open to any suggestions or improvements. I am also open to any issues you may find. Please check out the [CONTRIBUTING](CONTRIBUTING.md) file for more information.
 
 ## Credits
 
 I would like to thank the following people for their help in creating this project:
-
 - Sinthrill
+- ktprograms
 
 ## License
 
