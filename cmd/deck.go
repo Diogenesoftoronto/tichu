@@ -58,17 +58,20 @@ func DeckCreateCmd() *cobra.Command {
 		
 		Note that this argument returns the deck id of the new deck.`,
 		Args: cobra.MinimumNArgs(1),
-		RunE: func(cmd *cobra.Command, args []string) (error) {
-			flag, err := cmd.Flags().GetInt("amount"); if err != nil {
+		RunE: func(cmd *cobra.Command, args []string) error {
+			flag, err := cmd.Flags().GetInt("amount")
+			if err != nil {
 				return err
 			}
-			deck_type, err := strconv.ParseInt(args[0], 10, 8); if err != nil {
+			deck_type, err := strconv.ParseInt(args[0], 10, 8)
+			if err != nil {
 				return err
 			}
 			deck_int := int(deck_type)
-			dtype, err := deck.ParseType(deck_int); if err != nil {
+			dtype, err := deck.ParseType(deck_int)
+			if err != nil {
 				return err
-			} 
+			}
 			for i := 0; i < flag; i++ {
 				d := deck.New(dtype)
 				message := fmt.Sprintf("Created deck %s", d.Id)

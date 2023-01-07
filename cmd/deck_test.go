@@ -21,7 +21,6 @@ func TestDeckCmd(t *testing.T) {
 
 }
 
-
 func TestDeckCreateCmd(t *testing.T) {
 	cmd := DeckCreateCmd()
 	assert := func(want, got interface{}) {
