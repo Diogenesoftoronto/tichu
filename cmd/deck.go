@@ -54,7 +54,7 @@ func DeckCreateCmd() *cobra.Command {
 		deck create <deck_type>
 		
 		You can create multiple types of decks by passing the --amount flag.
-		deck create --amount <deck_type> <amount_int>
+		deck create --amount <amount_int> <deck_type>
 		
 		Note that this argument returns the deck id of the new deck.`,
 		Args: cobra.MinimumNArgs(1),
