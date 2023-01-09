@@ -74,7 +74,7 @@ func DeckCreateCmd() *cobra.Command {
 			}
 			for i := 0; i < flag; i++ {
 				d := deck.New(dtype)
-				message := fmt.Sprintf("Created deck %s", d.Id)
+				message := fmt.Sprintf("Created deck\n%s", d.Id)
 				sender := cmd.OutOrStdout()
 				fmt.Fprintln(sender, message)
 			}
