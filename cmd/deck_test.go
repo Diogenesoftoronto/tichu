@@ -8,20 +8,23 @@ import (
 )
 
 func TestDeckCmd(t *testing.T) {
-	cmd := DeckCmd()
-	assert := func(want, got interface{}) {
-		if want != got {
-			t.Errorf("want %v, got %v", want, got)
-		}
+	// Create and get an deck and id
+	cmd := DeckCreateCmd()
+	cmd.Flags().IntP("amount", "a", 1, "The amount of decks to create")
+	c, got, err := ExecuteCommandC(cmd, "--amount", "1", "1")
+	if err != nil {
+		t.Errorf("Command %v failed to execute, got %v,", c, got)
 	}
-	got := cmd.Use
-	want := "deck [commands] [flags] [args]"
-	assert(want, got)
-
-	got = cmd.Short
-	want = "Manage the cards in a deck"
-	assert(want, got)
-
+	c = DeckCmd()
+	// Call the base deck command to view the id
+	c, got, err = ExecuteCommandC(c, got)
+	if err != nil {
+		t.Errorf("Command %v failed to execute, got %v,", c, got)
+	}
+	// Make sure that what i got is a deck
+// 	if d, err := deck.Parse(got); err != nil {
+// 		t.Errorf("Parsing the result of %v failed. ")
+// 	} 
 }
 
 func TestDeckCreateCmd(t *testing.T) {
@@ -29,14 +32,14 @@ func TestDeckCreateCmd(t *testing.T) {
 	cmd := DeckCreateCmd()
 	// this is necessary because you can only check for a uuid as a type not the actual uuid!
 	// I will use the MustParse function in the uuid library to check whether something is a uuid.
-	// first i must use regular expressions to exclude everything except for the uuid.
+	// first I must use regular expressions to exclude everything except for the uuid.
 	cmd.Flags().IntP("amount", "a", 1, "The amount of decks to create")
 	cmd, got, err := ExecuteCommandC(cmd, "--amount", "2", "1")
 	if err != nil {
 		t.Errorf("got %v from command %v with error: %v", got, cmd, err)
 	}
 	// we need to parse got to exclude the parts we don't need.
-	r, err := regexp.Compile(`\S.+-.+`)
+	r, err := regexp.Compile(`.+-.+`)
 	if err != nil {
 		t.Errorf("failed to compile regular expression")
 	}
@@ -45,7 +48,7 @@ func TestDeckCreateCmd(t *testing.T) {
 	defer func() {
 		// recover returns an error if panic occurs so we handle the err in the case it is not nil
 		if err := recover(); err != nil {
-			t.Errorf("Found could not be parse as a UUID, %s, the error is %v, got is %v", found, err, got)
+			t.Errorf("Found could not be parsed as a UUID, %s, the error is %v, got is %v", found, err, got)
 		}
 	}()
 	// this function panics if this is wrong so we need to handle the recovery
