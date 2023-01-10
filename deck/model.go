@@ -183,3 +183,23 @@ func ParseFace(face_int int) (Face, error) {
 	}
 
 }
+
+// TODO: Consider json marshalling instead
+// func Parse(s string) (*Deck, error) {
+// 	// split the string into many string
+// 	str_array := strings.Split(s, " ")
+// 	// each split is an element of the struct
+// 	// parse each element into their respective types
+// 	id, err :=  uuid.Parse(str_array[0]); if err != nil {
+// 		fmt.Errorf("Tried to Parse %v as a uuid. got this error %v", str_array[0], err)
+// 	}
+
+	
+// 	result := &Deck{
+// 		Id: id,
+// 		Deck_type: ,
+// 		Deck_item: Card{
+
+// 		} 
+// 	}
+// }
