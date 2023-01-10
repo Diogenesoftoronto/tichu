@@ -14,7 +14,7 @@ import (
 func DeckCmd() *cobra.Command {
 	// deckCmd represents the deck command
 	var deckCmd = &cobra.Command{
-		Use:   "deck [commands] [flags] [args]",
+		Use:   "deck [flags] [commands] [args]",
 		Short: "Manage the cards in a deck",
 		Long: `This command will allow you to manage the cards in a deck.
 		
@@ -32,11 +32,11 @@ func DeckCmd() *cobra.Command {
 		
 		You can also view the cards in a deck.
 		deck <deck_id>`,
-		Args:      cobra.MinimumNArgs(2),
+		Args:      cobra.MinimumNArgs(1),
 		ValidArgs: []string{"", "create", "add", "remove", "shuffle", "view"},
 		Example:   "deck create deck",
 		Run: func(cmd *cobra.Command, args []string) {
-			fmt.Println("deck called")
+
 		},
 	}
 	return deckCmd
@@ -74,7 +74,7 @@ func DeckCreateCmd() *cobra.Command {
 			}
 			for i := 0; i < flag; i++ {
 				d := deck.New(dtype)
-				message := fmt.Sprintf("Created deck\n%s", d.Id)
+				message := d.Id
 				sender := cmd.OutOrStdout()
 				fmt.Fprintln(sender, message)
 			}
