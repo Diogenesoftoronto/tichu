@@ -4,27 +4,24 @@ import (
 	"regexp"
 	"testing"
 
+	"github.com/Diogenesoftoronto/tichu/deck"
 	"github.com/google/uuid"
 )
 
 func TestDeckCmd(t *testing.T) {
-	// Create and get an deck and id
-	cmd := DeckCreateCmd()
-	cmd.Flags().IntP("amount", "a", 1, "The amount of decks to create")
-	c, got, err := ExecuteCommandC(cmd, "--amount", "1", "1")
-	if err != nil {
-		t.Errorf("Command %v failed to execute, got %v,", c, got)
-	}
-	c = DeckCmd()
-	// Call the base deck command to view the id
-	c, got, err = ExecuteCommandC(c, got)
+	// Create and get an deck and idf
+	// then use the Deckcmd to retrieve that deck from the db
+	cmd := DeckCmd()
+	cmd.Flags().Bool("json", false, "Send output as json")
+	// // Call the base deck command to view the id
+	c, got, err := ExecuteCommandC(cmd, "--json", "b97d90e2-6a1d-4a14-872e-6270aea1be49")
 	if err != nil {
 		t.Errorf("Command %v failed to execute, got %v,", c, got)
 	}
 	// Make sure that what i got is a deck
-// 	if d, err := deck.Parse(got); err != nil {
-// 		t.Errorf("Parsing the result of %v failed. ")
-// 	} 
+	if d, err := deck.Parse(got); err != nil {
+		t.Errorf("Parsing the result of %v failed. ")
+	}
 }
 
 func TestDeckCreateCmd(t *testing.T) {
