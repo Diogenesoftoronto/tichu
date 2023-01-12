@@ -1,4 +1,4 @@
-# Install the base requirements for app.
+# syntax = docker/dockerfile:1.4
 # This stage is to support development
 
 FROM golang:1.19.4-alpine
