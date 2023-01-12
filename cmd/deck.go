@@ -8,8 +8,17 @@ import (
 	"strconv"
 
 	"github.com/Diogenesoftoronto/tichu/deck"
+	"github.com/google/uuid"
 	"github.com/spf13/cobra"
 )
+
+type DB struct {
+	decks []*deck.Deck
+}
+
+func NewDB() *DB {
+	return new(DB)
+}
 
 func DeckCmd() *cobra.Command {
 	// deckCmd represents the deck command
@@ -35,8 +44,25 @@ func DeckCmd() *cobra.Command {
 		Args:      cobra.MinimumNArgs(1),
 		ValidArgs: []string{"", "create", "add", "remove", "shuffle", "view"},
 		Example:   "deck create deck",
-		Run: func(cmd *cobra.Command, args []string) {
-
+		RunE: func(cmd *cobra.Command, args []string) error {
+			// Create a mock database with a uuid as the id of the deck
+			// that I want to retrieve
+			dbptr := NewDB()
+			// I must create a deck with a particular uuid
+			Deck := deck.New(1)
+			Id, err := uuid.Parse(args[0])
+			if err != nil {
+				return err
+			}
+			Deck.Id = Id
+			// create an array of decks
+			deck_arr := []*deck.Deck{Deck}
+			// Then place decks into a db
+			dbptr.decks = deck_arr
+			message := Deck
+			sender := cmd.OutOrStdout()
+			fmt.Fprint(sender, message)
+			return nil
 		},
 	}
 	return deckCmd
@@ -178,4 +204,5 @@ func init() {
 
 	// deckCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	creatCmd.Flags().IntP("amount", "a", 1, "The amount of decks to create")
+	deckCmd.Flags().Bool("json", false, "Send output as json")
 }
