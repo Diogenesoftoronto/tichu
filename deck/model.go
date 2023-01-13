@@ -51,9 +51,9 @@ const (
 
 // This is a struct that represents a deck of cards
 type Deck struct {
-	Id    uuid.UUID   `json:id`
-	Cards []Deck_item `json:cards`
-	Type  Deck_type   `json:type`
+	Id    uuid.UUID   `json:"id"`
+	Cards []Deck_item `json:"cards"`
+	Type  Deck_type   `json:"type"`
 }
 
 type Deck_type int
@@ -79,8 +79,3 @@ type Card struct {
 	Face  Face
 	Suit  Suit
 }
-
-/* PARSE FUNCTIONS
-
-These functions exist to turn normal integers into enums, limited types.
-This provides type guarantees.*/
