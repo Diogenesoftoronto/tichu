@@ -7,6 +7,8 @@ import (
 	"fmt"
 	"strconv"
 
+	"encoding/json"
+
 	"github.com/Diogenesoftoronto/tichu/deck"
 	"github.com/google/uuid"
 	"github.com/spf13/cobra"
@@ -59,7 +61,25 @@ func DeckCmd() *cobra.Command {
 			deck_arr := []*deck.Deck{Deck}
 			// Then place decks into a db
 			dbptr.decks = deck_arr
-			message := Deck
+
+			// check the json flag to see if it is true
+			flag, err := cmd.Flags().GetBool("json")
+			if err != nil {
+				return err
+			}
+			// if the json flag is true then set the message to json instead of a raw struct
+			// TODO: might be a good case for generics https://gobyexample.com/generics
+			var message any
+			if flag {
+				// to send as json i need to marshall the deck
+				message, err = json.Marshal(Deck); if err != nil {
+					return err
+				}
+			} else {
+
+				message = Deck
+
+			}
 			sender := cmd.OutOrStdout()
 			fmt.Fprint(sender, message)
 			return nil
