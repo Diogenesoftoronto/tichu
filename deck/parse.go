@@ -1,11 +1,19 @@
 package deck
 
 import (
+	"encoding/json"
 	"errors"
-	// "strings"
+	// "fmt"
+	"strconv"
+	"strings"
 
-	// "github.com/google/uuid"
+	"github.com/google/uuid"
 )
+
+/* PARSE FUNCTIONS
+
+These functions exist to turn normal integers into enums, limited types.
+This provides type guarantees.*/
 
 func ParseType(deck_int int) (Deck_type, error) {
 	switch deck_int {
@@ -104,23 +112,96 @@ func ParseFace(face_int int) (Face, error) {
 
 }
 
-// TODO: Consider json unmarshalling instead
-// func Parse(s string) (*Deck, error) {
-// 	var result *Deck
-// 	// split the string into many string
-// 	str_array := strings.Split(s, " ")
-// 	// each split is an element of the struct
-// 	// parse each element into their respective types
-// 	id, err :=  uuid.Parse(str_array[0]); if err != nil {
-// 		return result, err
-// 	}
+func Parse(s string) (*Deck, error) {
+	var result *Deck
+	// split the string into many string
+	str_array := strings.Split(s, " ")
+	// each split is an element of the struct
+	// parse each element into their respective types
+	id, err := uuid.Parse(str_array[0])
+	if err != nil {
+		return nil, err
+	}
+	var numsconv []int
+	for _, str := range str_array {
+		number, err := strconv.Atoi(str)
+		if err != nil {
+			return nil, err
+		}
+		numsconv = append(numsconv, number)
+	}
+	if err != nil {
+		return nil, err
+	}
+	Type, err := ParseType(numsconv[0])
+	if err != nil {
+		return nil, err
+	}
 
-	
-// 	result = &Deck{
-// 		Id: id,
-// 		Deck_type: 0,
-// 		Deck_item: Card{}, 
-// 	}
+	value, err := ParseValue(numsconv[2])
+	if err != nil {
+		return nil, err
+	}
+	face, err := ParseFace(numsconv[3])
+	if err != nil {
+		return nil, err
+	}
+	suit, err := ParseSuit(numsconv[4])
+	if err != nil {
+		return nil, err
+	}
 
-// 	return result, nil
+	result = &Deck{
+		Id: id,
+		Cards: []Deck_item{
+			{Card{
+				Value: value,
+				Face:  face,
+				Suit:  suit,
+			},
+			},
+		},
+		Type: Type,
+	}
+
+	return result, nil
+}
+
+// type ServiceID struct {
+//     UUID uuid.UUID
 // }
+
+// type Meta struct {
+//     Name    string `json:"name"`
+//     Version string `json:"version"`
+//     SID     *ServiceID `json:"UUID"`
+// }
+
+// func (self *ServiceID) UnmarshalJSON(b []byte) error {
+    // s := strings.Trim(string(b), "\"")
+//     self.UUID = uuid.Parse(s)
+//     if self.UUID == nil {
+//             return errors.New("Could not parse UUID")
+//     }
+//     return nil
+// }
+
+
+func ParseJson(s string) (*Deck, error) {
+	var result *Deck
+	// unmarshall a simple struct
+
+	// type simpDeck struct {
+	// 	id string `json:"id"`
+	// 	Cards []Deck_item 	`json:"cards"`
+	// 	Type Deck_type	`json:"type"`
+	// }
+	// take the id of that and convert it to a uuid
+
+	// take that 
+	// unmarshall json from an array of bytes into struct!
+	if err := json.Unmarshal([]byte(s), &result); err != nil {
+		return nil, err
+	}
+	return result, nil
+}
