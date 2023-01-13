@@ -19,8 +19,8 @@ func TestDeckCmd(t *testing.T) {
 		t.Errorf("Command %v failed to execute, got %v,", c, got)
 	}
 	// Make sure that what i got is a deck
-	if d, err := deck.Parse(got); err != nil {
-		t.Errorf("Parsing the result of %v failed. ")
+	if _, err := deck.ParseJson(got); err != nil {
+		t.Errorf("Parsing the result of %v failed. with %v error.", got, err)
 	}
 }
 
