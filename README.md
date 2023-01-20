@@ -2,7 +2,7 @@
 ![run](https://github.com/Diogenesoftoronto/tichu/actions/workflows/run.yml/badge.svg)
 ![test](https://github.com/Diogenesoftoronto/tichu/actions/workflows/test.yml/badge.svg)
 
-
+![tichutape](./vhs/tichu.gif)
 
 ![logo](img/logo.jpeg) <p style="font-size: 12rem; font-weight: bold; color: #663399; font-family: 'Press Start 2P', cursive; text-transform: uppercase; letter-spacing: 2px; text-shadow: 1px 1px 2px black;">TICHU</p>
 # Tichu
